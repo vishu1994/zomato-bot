@@ -15,35 +15,32 @@ class Zomato:
         self.base_url = "https://developers.zomato.com/api/v2.1/"
 
 
-    def getCityId(self,city_name):
+    def getEntityId(self,location):
         '''
         Takes city name as argument.
         Returns the corressponding city_id.
         '''
-        city_name = city_name.split(' ')
-        city_name = '%20'.join(city_name)
-        print(city_name)
+        print(location)
+        queryString={"query":location}
         headers = {'Accept': 'application/json', 'user-key': self.api_key}
-        r = requests.get(self.base_url + "cities?q=" + city_name, headers=headers)
-        #a = ast.literal_eval(r)
+        r = requests.get(self.base_url+"locations",params=queryString, headers=headers)
         data=r.json()
-        #print(data['location_suggestions'][0]['id'])
-
-        #if there is no such city....it should be an invalid city name...
+        
         if len(data['location_suggestions']) == 0:
-            raise Exception('invalid_city_name')
+            raise Exception('invalid_location')
             
         else:
-            return data['location_suggestions'][0]['id']
+            return data['location_suggestions'][0]['entity_id']
 
-    def get_cuisines(self, city_ID):
+    def get_cuisines(self, entity_id):
         """
         Takes City ID as input.
         Returns dictionary of all cuisine names and their respective cuisine IDs in a given city.
         """
 
         headers = {'Accept': 'application/json', 'user-key': self.api_key}
-        r = (requests.get(self.base_url + "cuisines?city_id=" + str(city_ID), headers=headers).content).decode("utf-8")
+        queryString={"city_id":entity_id}
+        r = (requests.get(self.base_url +"cuisines",params=queryString,headers=headers).content).decode("utf-8")
         a = ast.literal_eval(r)
         all_cuisines_in_a_city=a['cuisines']
 
@@ -58,25 +55,46 @@ class Zomato:
         return cuisines
 
 
-    def get_cuisine_id(self,cuisine_name,city_id):
+    def get_cuisine_id(self,cuisine_name,entity_id):
         '''
         Takes cuisine name and city id as argument.
         Returns the cuisine id for that cuisine.
         '''
-        cusines=self.get_cuisines(city_id)
+        cusines=self.get_cuisines(entity_id)
         return cusines[cuisine_name.lower()]
 
 
-    def get_all_restraunts(self,city,cuisine):
+    def get_all_restraunts(self,location,cuisine):
         '''
         Takes city name and cuisine name as arguments.
         Returns a list of 20 restaurants.
         '''
-        city_id=self.getCityId(city)
-        cuisine_id=self.get_cuisine_id(cuisine,city_id)
+        entity_id=self.getEntityId(location)
+        cuisine_id=self.get_cuisine_id(cuisine,entity_id)
+        queryString={"entity_id":entity_id,"cuisines":cuisine_id}
 
         headers = {'Accept': 'application/json', 'user-key': self.api_key}
-        r =requests.get(self.base_url + "search?entity_id=" + str(city_id)+"&cuisines="+str(cuisine_id), headers=headers)
+        r =requests.get(self.base_url + "search",params=queryString, headers=headers)
+
+        list_ofall_rest=r.json()["restaurants"]
+        names_of_all_rest=[]
+        for rest in list_ofall_rest:
+            names_of_all_rest.append(rest["restaurant"]["name"])
+
+
+        return names_of_all_rest
+
+    def get_all_restraunts_without_cuisne(self,location):
+        '''
+        Takes city name and cuisine name as arguments.
+        Returns a list of 20 restaurants.
+        '''
+        entity_id=self.getEntityId(location)
+        
+        queryString={"entity_id":entity_id}
+
+        headers = {'Accept': 'application/json', 'user-key': self.api_key}
+        r =requests.get(self.base_url + "search",params=queryString, headers=headers)
 
         list_ofall_rest=r.json()["restaurants"]
         names_of_all_rest=[]
@@ -120,7 +138,7 @@ class ActionSetLocation(Action):
         return [SlotSet("location",location_name[0])]
 
 
-class ActionSetCuisine(Action):
+class ActionSetCuisine_showRestaurants(Action):
     def name(self):
         return "action_get_cuisine_show_restaurants"
 
@@ -139,9 +157,34 @@ class ActionSetCuisine(Action):
             dispatcher.utter_message(r)
 
         return []
+ 
+
+class GetRestaurantsWithoutCuisine(Action):
+
+    def name(self):
+        return "action_restaurants_nocuisine"
+
+
+    def run(self, dispatcher,tracker,domain):
+
+        location_name=tracker.get_slot('location')
         
+        print(location_name)
+
+        zom=Zomato()
+
+        list_all_restaurants=zom.get_all_restraunts_without_cuisne(location_name)
+        
+        for r in list_all_restaurants:
+            dispatcher.utter_message(r)
+
+        return []
+
+
+
 
 class ActionShowRestaurants(Action):
+
 
     def name(self):
         return "action_show_restaurants"
