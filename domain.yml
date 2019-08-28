@@ -45,6 +45,12 @@ templates:
   utter_itsok:
   - text: It's completely fine ,i will try to fetch all types of restaurants.Choose
       among them
+  utter_enter_cuisine_again:
+  - text: Sorry we couldn't find any {cuisine} cuisine in {location}. Would you like
+      to check some other cuisine?
+  utter_nosuch_cuisine_all_restaurants:
+  - text: We dint find any such cuisine that you are looking for.We will help you
+      by providing all the avaiable restaurants.
 actions:
 - utter_greet
 - utter_did_that_help
@@ -63,3 +69,5 @@ actions:
 - utter_sorry
 - action_restaurants_nocuisine
 - utter_itsok
+- utter_enter_cuisine_again
+- utter_nosuch_cuisine_all_restaurants

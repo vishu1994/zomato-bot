@@ -189,3 +189,26 @@
     - utter_did_that_help
 * affirm
     - utter_goodbye
+
+## error story 5
+
+* greet
+    - utter_greet
+* mood_great
+    - utter_assist
+* restaurant_search
+    - utter_ask_location
+* telling_location
+    - action_set_location
+    - slot{"location":"Borivali"}
+    - utter_affirm_location
+    - utter_ask_cuisine
+* telling_cuisine{"cuisine":"italian"}
+    - slot{"cuisine":"italian"}
+    - action_get_cuisine_show_restaurants
+    - utter_ask_cuisine
+* telling_cuisine{"cuisine":"chinese"}
+    - slot{"cuisine":"chinese"}
+    - action_get_cuisine_show_restaurants
+    - utter_nosuch_cuisine_all_restaurants
+    - action_restaurants_nocuisine
