@@ -238,6 +238,8 @@
 - i am looking in borivali
 - i am living in borivali
 - my location will be in borivali
+- i am in mumbai
+- i am in hyderabad
 
 ## intent:telling_location_cuisine
 - i am looking for some [chinese](cuisine) food in mumbai
@@ -281,3 +283,4 @@
 - i am looking to eat some [italian](cuisine) food in chennai
 - i am looking to eat some [italian](cuisine) food in kerala
 - i would love to have [chinese](cuisine) food in chennai
+- get me some [chinese](cuisine) food in bhopal
