@@ -63,7 +63,6 @@ actions:
 - utter_ask_location_cuisine
 - action_show_restaurants
 - action_set_location
-- action_set_cuisine
 - action_get_cuisine_show_restaurants
 - utter_default
 - utter_sorry
@@ -71,3 +70,6 @@ actions:
 - utter_itsok
 - utter_enter_cuisine_again
 - utter_nosuch_cuisine_all_restaurants
+- utter_tryAfter_sometime
+- utter_location_denied
+- utter_affirm_cuisine

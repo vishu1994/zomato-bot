@@ -14,6 +14,7 @@
 - yes it did
 - na
 - its ok
+- yes indeed
 
 ## intent:deny
 - no
@@ -44,6 +45,22 @@
 - i dont have any idea
 - no idea about that
 - no idea about it
+- i am not sure about my location
+- actually i really dont know i am new here
+- actually i really don't know please help withut location
+- i am new here i dont know location yet
+- i really dont know
+- i dont know my location
+- dont know
+- not sure actualy
+- i am not sure about cuisine i am fine with anything
+- i am not sure about cuisine
+- i am not sure...
+- i am not sure about the location
+- i am really sorry
+- i dont know actually i am new
+- i dont know yet
+- sjkadbas
 
 ## intent:goodbye
 - bye
@@ -165,6 +182,15 @@
 - find some food places near to me
 - get me some restaurants near to me
 - i am looking for some food points
+- i am looking for restaurants
+- get me some flight details
+- please get me some food points near by
+- i  am looking for some restaurants
+- get me some food points near by
+- get me some restaurants near by....
+- i am hungry please get me some restaurants near by
+- looking for some food points near by
+- hmm i am looking for some restaurants near by
 
 ## intent:telling_cuisine
 - i would prefer to eat [mexican](cuisine)
@@ -204,6 +230,10 @@
 - australian
 - i will prefer australian then
 - i will prefer australian
+- i want to eat [italian](cuisine) food
+- [italian](cuisine) please
+- ohk i would love to eat [italian](cuisine) food
+- ok i would like to eat some [italian](cuisine) food
 
 ## intent:telling_location
 - my preffered location will be bengaluru
@@ -238,8 +268,29 @@
 - i am looking in borivali
 - i am living in borivali
 - my location will be in borivali
+- madhapur
+- i am living in madhapur...
+- my location is andheri
+- i am currently living in mumbai
+- i am living near borivali
+- borivali
+- i am living in madhapur
+- currently living in mumbai
 - i am in mumbai
+- this place seems to be close to hyderabad
+- i feel this place is near to borivali
+- i am near to chennai
+- i think i am near to mumbai
+- i am looking for restaurants in mumbai
+- i am living in hyderabad
+- get me some restaurants in hyderabad
+- i am at madhapur
+- i am in madhapur
 - i am in hyderabad
+- i am in chennai
+- i think i am some where near to mumbai
+- i am looking to eat something in bhopal
+- i think it is mumbai
 
 ## intent:telling_location_cuisine
 - i am looking for some [chinese](cuisine) food in mumbai
@@ -283,4 +334,12 @@
 - i am looking to eat some [italian](cuisine) food in chennai
 - i am looking to eat some [italian](cuisine) food in kerala
 - i would love to have [chinese](cuisine) food in chennai
+- get me some [italian](cuisine) food in surat
+- i am looking to eat [chinese](cuisine) food in borivali
+- i am looking to eat [italian](cuisine) food in borivali
+- i would like to eat [chinese](cuisine) food in madhapur
 - get me some [chinese](cuisine) food in bhopal
+- i am looking for some [chinese](cuisine) food in surat
+- i am looking for some [chinese](cuisine) food in faridabad
+- i am looking for some [italian](cuisine) food in borivali
+- i am looking for [chinese](cuisine) food in hyderabad
